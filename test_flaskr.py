@@ -30,7 +30,7 @@ class AgencyTestCase(unittest.TestCase):
         self.database_path = os.environ.get('DATABASE_URL_TEST')
         if not self.database_path:
             self.database_name = "agency_test"
-            self.database_path = f"postgres://postgres:postgres@localhost:5432/{self.database_name}"
+            self.database_path = f"postgresql://postgres:postgres@localhost:5432/{self.database_name}"
         setup_db(self.app, self.database_path)
 
         # binds the app to the current context
