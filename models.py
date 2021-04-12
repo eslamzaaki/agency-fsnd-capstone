@@ -11,10 +11,6 @@ from flask_migrate import Migrate
 # ---------------------------------------------------------
 
 database_path = os.environ.get('DATABASE_URL')
-if not database_path:
-    database_name = "agency"
-    database_path = f"postgresql://postgres:postgres@localhost:5432/{database_name}"
-
 db = SQLAlchemy()
 
 
@@ -40,7 +36,7 @@ class Actor(db.Model):
     name = db.Column(db.String)
     age = db.Column(db.String)
     gender = db.Column(db.String)
-	
+
     def __repr__(self):
         return self.name
 

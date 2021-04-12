@@ -8,9 +8,10 @@ from urllib.request import urlopen
 # Utils
 # ---------------------------------------------------------
 
-AUTH0_DOMAIN = "test460.us.auth0.com"
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'drink'
+
+AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
+ALGORITHMS = os.environ.get['ALGORITHMS']
+API_AUDIENCE = os.environ.get('API_AUDIENCE')
 JWKS_URL = f'https://{AUTH0_DOMAIN}/.well-known/jwks.json'
 
 

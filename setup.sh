@@ -2,6 +2,8 @@
 export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/agency"
 export DATABASE_URL_TEST="postgresql://postgres:postgres@localhost:5432/agency_test"
 export FLASK_APP=flaskr
+export AUTH0_DOMAIN = "test460.us.auth0.com"
+export ALGORITHMS = ['RS256']
 export API_AUDIENCE = 'drink'
 export DOMAIN="test460.us.auth0.com"
 export CLIENT_ID="1nfR2801THLDVz2hCyiWp5CstHsXhezh"

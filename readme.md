@@ -2,13 +2,36 @@
 
 ## Full stack nano Degree capstone
 
-The Casting Agency API supports a basic castic agency by allowing users to query the database for movies and actors. There are three different user roles (and related permissions), which are:
+The Casting Agency API supports a basic castic agency by allowing users to query the database for movies and actors.it is the most simplest and easist API support you can use for your casting agency with great flexability, There are three different user roles (and related permissions), which are:
+
+## roles
 
 - Casting assistant: Can view actors and movies.
 - Casting director: Can view, add, modify, or delete actors; can view and modify movies.
 - Executive producer: Can view, add, modify, or delete actors and movies.
 
+## permissions
+
+-get:actors
+-get:movies
+-post:actors
+-post:movies
+-patch:actors
+-patch:movies
+-delete:actors
+-delete:movies
+
 # Get Started
+
+## Installing Dependencies
+
+- Python 3.9
+  Follow instructions to install the latest version of python for your platform in the python docs.
+- pip dependencies
+
+```
+pip install -r requirements.txt
+```
 
 ## Running the API
 
@@ -22,7 +45,7 @@ Auth0 information for endpoints that require authentication can be found in `set
 python test_flaskr.py
 ```
 
-## run the server locally
+## run the development server
 
 ```
 export FLASK_APP=flaskr

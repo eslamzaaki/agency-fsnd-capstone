@@ -9,14 +9,14 @@ import unittest
 from flask import Flask, request, abort, jsonify
 from flask_cors import CORS
 from auth.auth import *
-from models import Actor,Movie,setup_db
+from models import Actor, Movie, setup_db
 
 # ---------------------------------------------------------
 # Config
 # ---------------------------------------------------------
 
-def create_app(test_config=None):
 
+def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
     setup_db(app)
@@ -39,8 +39,6 @@ def create_app(test_config=None):
     # ---------------------------------------------------------
     # Routes
     # ---------------------------------------------------------
-        #retrive actors
-
     @app.route('/actors', methods=['GET'])
     @requires_auth('get:actors')
     def get_actors():
@@ -53,12 +51,12 @@ def create_app(test_config=None):
                 'success': True,
                 'actors': [actor.format() for actor in actors]
             }), 200
-        #retrive movies
+
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
     def get_movies():
-            movies = Movie.query.all()
 
+            movies = Movie.query.all()
             if not movies:
                 abort(404)
 
@@ -88,7 +86,7 @@ def create_app(test_config=None):
             try:
                 actor.insert()
             except:
-                abort(422)  
+                abort(422)
 
             return jsonify({
                 'success': True,
@@ -110,7 +108,7 @@ def create_app(test_config=None):
             try:
                 movie.insert()
             except:
-                abort(422)    
+                abort(422)
 
             return jsonify({
                 'success': True,
@@ -141,14 +139,13 @@ def create_app(test_config=None):
             try:
                 actor.update()
             except:
-                abort(422)    
+                abort(422)
 
             return jsonify({
                 'success': True,
                 'actor': actor.format(),
             }), 200
 
-        #update a movie in the database.
     @app.route('/movies/<int:movie_id>', methods=['PATCH'])
     @requires_auth('patch:movies')
     def update_movie(movie_id):
@@ -169,15 +166,12 @@ def create_app(test_config=None):
             try:
                 movie.update()
             except:
-                abort(422)    
-
-
+                abort(422)
             return jsonify({
                 'success': True,
                 'movie': movie.format(),
             }), 200
 
-        #delete actors in the database.
     @app.route('/actors/<int:id>', methods=['DELETE'])
     @requires_auth('delete:actors')
     def delete_actor(id):
@@ -254,7 +248,7 @@ def create_app(test_config=None):
                 "success": False,
                 "error": 400,
                 "message": "Bad Request"
-            }), 400        
+            }), 400
 
     @app.errorhandler(AuthError)
     def auth_error(error):
@@ -263,10 +257,5 @@ def create_app(test_config=None):
                 'error': error.status_code,
                 'message': error.error['description']
             }), error.status_code
-
-# ---------------------------------------------------------
-# Launch
-# ---------------------------------------------------------
-
 
     return app
