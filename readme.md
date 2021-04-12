@@ -12,14 +12,14 @@ The Casting Agency API supports a basic castic agency by allowing users to query
 
 ## permissions
 
--get:actors
--get:movies
--post:actors
--post:movies
--patch:actors
--patch:movies
--delete:actors
--delete:movies
+- get:actors
+- get:movies
+- post:actors
+- post:movies
+- patch:actors
+- patch:movies
+- delete:actors
+- delete:movies
 
 # Get Started
 
